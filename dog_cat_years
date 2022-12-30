@@ -1,0 +1,58 @@
+def human_years_cat_years_dog_years(human_years):
+    
+    output = []
+
+    output.append(human_years)
+
+
+    if human_years == 1:
+        output.append(15)
+        print(output)
+    elif human_years == 2:
+        output.append(24)
+    else:
+        cat_4 = (24 + ((human_years - 2) * 4))
+        output.append(cat_4)
+
+    if human_years == 1:
+        output.append(15)
+        return output
+    elif human_years == 2:
+        output.append(24)
+        return output
+    else:
+        dog_5 = (24 + ((human_years - 2) * 5))
+        output.append(dog_5)
+    
+    return output
+
+print(human_years_cat_years_dog_years(1))
+
+
+# def human_years_cat_years_dog_years(human_years):
+#     output = []
+    
+#     # human
+#     output.append(human_years)
+
+#     # cat
+
+#     if human_years == 1:
+#         output = output.append(15)
+#     elif human_years == 2:
+#         output.append(24)
+#     else:
+#         cat_4 = (24 + ((human_years - 2) * 4))
+#         output.append(cat_4)
+
+#     # dog
+
+#     if human_years == 1:
+#         output = output.append(15)
+#     elif human_years == 2:
+#         output.append(24)
+#     else:
+#         dog_5 = (24 + ((human_years - 2) * 5))
+#         output.append(dog_5)
+    
+#     return output

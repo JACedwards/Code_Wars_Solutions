@@ -1,0 +1,20 @@
+# gave up
+# 
+# 
+# def digitize(n):
+
+#    n = str(n)
+#    print(n)
+#    n = n.split()
+#    print(n)
+#    n = n.reverse()
+#    print(n)
+#    return n
+
+# print(digitize('12345'))
+
+n=12345
+y=str(n)
+z=y.split()
+output = ''.join(z)
+print(output)
