@@ -11,9 +11,7 @@
 
 
 def solution(text, ending):
-    length = len(ending)
-    print(text[-length:])
-    return text[-length:] == ending
+    return text[-len(ending):] == ending
 
 
 print(solution("samurai", "ai"))
