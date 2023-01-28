@@ -1,16 +1,5 @@
-def get_smallest_odd(numlist):
-    oddcount = 0
-    smallest = float
-    for num in numlist:
-        if num %2 !=0:
-            oddcount +=1
-            if num < smallest:
+x = [1, 2, [3, 4, [5]]]
 
-    return oddcount, smallest
-
-
-print(get_smallest_odd([1,2,3,4,5]))
-
-
-oddcount = 3
-smallest = 1
+for y in x:
+    if isinstance(y, list):
+        print(y)
