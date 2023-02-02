@@ -17,17 +17,13 @@ def generate_hashtag(s):
     if s == '':
         return False
 
-    long_check = s.replace(" ", "")
-    if len(long_check) > 140:
-        return False
-
     z = s.split()
     output = '#'
     for w in z:
         output = f'{output}{w.title()}'
     
-    return output
+    return output if len(output) < 140 else False
 
 
-print(generate_hashtag(" Hello there thanks for trying my Kata"))
+print(generate_hashtag("Looooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooong Cat"))
 
