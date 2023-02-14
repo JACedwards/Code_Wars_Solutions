@@ -27,16 +27,38 @@
 
 
 
-def bingo(ticket,win):
+# def bingo(ticket,win):
     
+#     mini_win = 0
+#     for arr in ticket:
+#         for i in range(len(arr[0])):
+#             print(arr[0][i])
+#             print(ord(arr[0][i]))
+#             if arr[1] == ord(arr[0][i]):
+#                 mini_win += 1
+#     print(f'This is mini_win: {mini_win}')
+#     if mini_win >= win:
+#         return 'Winner!'
+    
+#     else:
+#         return 'Loser!'
+
+
+# print(bingo([['ABC', 65], ['HGR', 74], ['BYHT', 74]], 2))
+# # print(bingo([['ABC', 65], ['HGR', 74], ['BYHT', 74]], 1))
+
+# txt1 = "My name is {fname}, I'm {age}".format(fname = "John", age = 36)
+
+
+def bingo(ticket,win):
+
     mini_win = 0
     for arr in ticket:
-        for i in range(len(arr[0])):
-            print(arr[0][i])
-            print(ord(arr[0][i]))
-            if arr[1] == ord(arr[0][i]):
-                mini_win += 1
-    print(f'This is mini_win: {mini_win}')
+        txt = "{:c}"
+
+        if txt.format(arr[1]) in arr[0]:
+            mini_win += 1
+
     if mini_win >= win:
         return 'Winner!'
     
@@ -44,5 +66,5 @@ def bingo(ticket,win):
         return 'Loser!'
 
 
-print(bingo([['ABC', 65], ['HGR', 74], ['BYHT', 74]], 2))
-# print(bingo([['ABC', 65], ['HGR', 74], ['BYHT', 74]], 1))
+# print(bingo([['ABC', 65], ['HGR', 74], ['BYHT', 74]], 2))
+print(bingo([['ABC', 65], ['HGR', 74], ['BYHT', 74]], 1))
