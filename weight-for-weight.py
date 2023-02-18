@@ -1,3 +1,8 @@
+#still some errors on this one:  run test to keep working (missing 123):  https://www.codewars.com/kata/55c6126177c9441a570000cc/train/python 
+
+#Pandas, 2-key sort: https://stackoverflow.com/questions/17141558/how-to-sort-a-dataframe-in-python-pandas-by-two-or-more-columns
+
+
 # My friend John and I are members of the "Fat to Fit Club (FFC)". John is worried because each month a list with the weights of members is published and each month he is the last on the list which means he is the heaviest.
 
 # I am the one who establishes the list so I told him: "Don't worry any more, I will modify the order of the list". It was decided to attribute a "weight" to numbers. The weight of a number will be from now on the sum of its digits.
@@ -108,130 +113,108 @@
 # 9
 # 9
 
-#_______________This second one is attempt to deal with original string having duplicates___________
+#_______________This second one is attempt to deal with original string having duplicates using pandas___________
+
+import pandas as pd
 
 def order_weight(strng):
-
+    #strng = "2000 10003 1234000 44444444 9999 11 11 22 123"
     strng = strng.split()
-
-    srt_nums = []
+    # = ['2000', '10003', '1234000', '44444444', '9999', '11', '11', '22', '123']
+    ints = []
 
     for s in strng:
-        srt_nums.append(int(s))
-    srt_nums.sort()
-    # [11, 11, 22, 123, 2000, 9999, 10003, 1234000, 44444444]
+        ints.append(int(s))
+    # ints = [2000, 10003, 1234000, 44444444, 9999, 11, 11, 22, 123]
 
-
-
-    print(srt_nums)
-
-    dct_lst = {strng[i] : [0, '', 0] for i in range(len(strng))}
-    # {'2000': [0, '', 0], '10003': [0, '', 0], '1234000': [0, '', 0], '44444444': [0, '', 0], '9999': [0, '', 0], '11': [0, '', 0], '22': [0, '', 0], '123': [0, '', 0]}
-
-    l=0
-    
-
-    while l <= len(srt_nums)-1:
-        count = srt_nums.count(srt_nums[l])
-        # print(count, srt_nums[l])
-        if count > 1:
-            dct_lst[str(srt_nums[l])] = [0, '', count]
-            srt_nums.remove(srt_nums[l])
-
-        else:
-            l+=1
-
-    print(srt_nums)
-    print(dct_lst)
-  
-    convert = []
+    #sum + alpha:
     nums = {1:'one', 10:'ten', 11: 'eleven', 12: 'tw', 13: 'th', 14:'fo', 15:'fi', 16: 'si', 17:'se', 18:'ei', 19:'ni', 2: 'tw', 3: 'th', 4 : 'fo', 5 : 'fi', 6 : 'si', 7:'se', 8:'ei', 9:'ni'}
+
+    sums = []
+    alphas = []
+    convert = []
 
     for w in strng:
         for d in w:
             convert.append(int(d))
         sm = sum(convert)
-        print(sm)
+        sums.append(sm)
         if w == '10':
             alpha = nums.get(10)
-            ct_lst = dct_lst.get(w)
-            ct = ct_lst[2]
-            dct_lst[w] = [sm, alpha, ct]
+
         elif w == '11':
             alpha = nums.get(11)
-            ct_lst = dct_lst.get(w)
-            ct = ct_lst[2]
-            dct_lst[w] = [sm, alpha, ct]
+
         elif w == '12':
             alpha = nums.get(12)
-            ct_lst = dct_lst.get(w)
-            ct = ct_lst[2]
-            dct_lst[w] = [sm, alpha, ct]
+
         elif sm == '13':
             alpha = nums.get(13)
-            ct_lst = dct_lst.get(w)
-            ct = ct_lst[2]
-            dct_lst[w] = [sm, alpha, ct]
+
         elif w == '14':
             alpha = nums.get(14)
-            ct_lst = dct_lst.get(w)
-            ct = ct_lst[2]
-            dct_lst[w] = [sm, alpha, ct]            
+           
         elif w == '15':
             alpha = nums.get(15)
 
-            ct_lst = dct_lst.get(w)
-            ct = ct_lst[2]
-            dct_lst[w] = [sm, alpha, ct] 
         elif w == '16':
             alpha = nums.get(16)
-            ct_lst = dct_lst.get(w)
-            ct = ct_lst[2]
-            dct_lst[w] = [sm, alpha, ct] 
+   
         elif w == '17':
             alpha = nums.get(17)
-            ct_lst = dct_lst.get(w)
-            ct = ct_lst[2]
-            dct_lst[w] = [sm, alpha, ct] 
+ 
         elif w == '18':
             alpha = nums.get(18)
-            ct_lst = dct_lst.get(w)
-            ct = ct_lst[2]
-            dct_lst[w] = [sm, alpha, ct] 
+ 
         elif w == '19':
             alpha = nums.get(19)
-            ct_lst = dct_lst.get(w)
-            ct = ct_lst[2]
-            dct_lst[w] = [sm, alpha, ct] 
+ 
         else:
             n = w[0]
             alpha = nums.get(int(n))
-            ct_lst = dct_lst.get(w)
-            ct = ct_lst[2]
-            dct_lst[w] = [sm, alpha, ct] 
-
-        alpha = ''
+        alphas.append(alpha)
         convert = []
-    print(dct_lst)
-    sorted_dct_lst = sorted(dct_lst.items(), key = lambda x:x[1][0])
-    print(sorted_dct_lst)
-    output = []
-    for srt in sorted_dct_lst:
-        cnt_lst = dct_lst.get(srt[0])
-        print(cnt_lst)
 
-    ##<><>________start here.  here is current sorted_dict_list.  Need to use index 2 of index 1 to see if there are any duplicates (in this case there are two elevens).  figure out a way to use that to add duplicates back into list since they've been overwritten in dictionary form. Also not sure I'm alphabetizing when sums are same.*********************
+    # ints = [2000, 10003, 1234000, 44444444, 9999, 11, 11, 22, 123]
+    #['tw', 'one', 'one', 'fo', 'ni', 'eleven', 'eleven', 'tw', 'one']
+    #[2, 4, 10, 32, 36, 2, 2, 4, 6]
+
+
+    lst_o_lsts = []
+
+    for i in range(len(ints)):
+        sub_lst = []
+        sub_lst.append(strng[i])
+        sub_lst.append(ints[i])
+        sub_lst.append(alphas[i])
+        sub_lst.append(sums[i])
+        lst_o_lsts.append(sub_lst)
+        sub_lst = []
+
+    print(lst_o_lsts)
+
+    #lst_o_lsts:
+    #[['2000', 2000, 'tw', 2], ['10003', 10003, 'one', 4], ['1234000', 1234000, 'one', 10], ['44444444', 44444444, 'fo', 32], ['9999', 9999, 'ni', 36], ['11', 11, 'eleven', 2], ['11', 11, 'eleven', 2], ['22', 22, 'tw', 4]]
+
+    df = pd.DataFrame(lst_o_lsts, columns = ['str', 'ints', 'alphas', 'sums'])
+    
+    df_srt = df.sort_values(by=['sums', 'alphas'])
+ 
+
+    col_list = df_srt["str"].values.tolist()
+
+    output = ' '.join(col_list)
+
+    return output
+
+
 
     
-
-    #[('2000', [2, 'tw', 0]), ('11', [2, 'eleven', 2]), ('10003', [4, 'one', 0]), ('22', [4, 'tw', 0]), ('123', [6, 'one', 0]), ('1234000', [10, 'one', 0]), ('44444444', [32, 'fo', 0]), ('9999', [36, 'ni', 0])]
-
-    # output.append(srt[0])
-    # output_str = ' '.join(output)
-    # return output_str
-
-    
+  
 
 print(order_weight("2000 10003 1234000 44444444 9999 11 11 22 123"))
+#"11 11 2000 10003 22 ***123*** 1234000 44444444 9999"
+# print(order_weight("56 65 74 100 99 68 86 180 90"))
+# "100 180 90 56 65 74 68 86 99"
 
         # test.assert_equals(order_weight("2000 10003 1234000 44444444 9999 11 11 22 123"), "11 11 2000 10003 22 123 1234000 44444444 9999")
