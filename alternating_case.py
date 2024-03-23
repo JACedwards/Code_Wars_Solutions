@@ -16,3 +16,4 @@ def to_alternating_case(string):
 
 print(to_alternating_case("hello world"))
 
+
